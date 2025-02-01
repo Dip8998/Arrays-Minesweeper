@@ -1,31 +1,34 @@
 #pragma once
-#include "../../header/Gameplay/Board/BoardView.h"
+#include <sfml/Graphics.hpp>
 
-namespace Gameplay {
+namespace Gameplay
+{
+    namespace Board
+    {
+        class BoardView;
 
-	namespace Board {
+        class BoardController
+        {
+        public:
+            static const int number_of_rows = 9;
+            static const int number_of_colums = 9;
+            static const int mines_count = 8;
 
-		class BoardController {
+            BoardController();
+            ~BoardController();
 
-		public:
-			static const int number_of_rows = 9;
-			static const int number_of_colums = 9;
-			static const int mines_count = 8;
+            void initialize();
+            void update();
+            void render();
+            void reset();
 
-			BoardController();
-			~BoardController();
+        private:
+            BoardView* board_view;
 
-			void initialize();
-			void update();
-			void render();
-			void reset();
-
-		private:
-			BoardView* board_view;
-			void createBoard();
-			void destroy();
-			void deleteBoard();
-
-		};
-	}
+            void createBoard();
+            void resetBoard();
+            void deleteBoard();
+            void destroy();
+        };
+    }
 }

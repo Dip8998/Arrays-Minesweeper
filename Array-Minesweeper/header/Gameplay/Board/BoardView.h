@@ -1,35 +1,38 @@
 #pragma once
 #include "../../header/UI/UIElement/ImageView.h"
 
-namespace Gameplay {
+namespace Gameplay
+{
+    namespace Board
+    {
+        class BoardController;
 
-	namespace Board {
+        class BoardView
+        {
+        private:
 
-		class BoardController;
+            const float board_width_offset = 115.f;
+            const float board_height_offset = 329.f;
 
-		class BoardView {
-		private:
-			const float board_width = 866.f;
-			const float board_height = 1080.f;
+            const float board_width = 866.f;
+            const float board_height = 1080.f;
 
-			const float background_alpha = 85.f;
+            const float background_alpha = 85.f;
 
-			BoardController* board_controller;
-			UI::UIElement::ImageView* background_image;
-			UI::UIElement::ImageView* board_image;
+            BoardController* board_controller;
+            UI::UIElement::ImageView* board_image;
+            UI::UIElement::ImageView* background_image;
 
-			void initializeBackgroundImage();
-			void initializeBoardImage();
+            void initializeBackgroudImage();
+            void initializeBoardImage();
 
-		public:
-			BoardView(BoardController* controller);
-			~BoardView();
+        public:
+            BoardView(BoardController* controller);
+            ~BoardView();
 
-			void initialize();
-			void update();
-			void render();
-		};
-
-	}
-
+            void initialize();
+            void update();
+            void render();
+        };
+    }
 }

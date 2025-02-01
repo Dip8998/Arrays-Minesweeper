@@ -4,55 +4,56 @@
 #include "../../header/Global/ServiceLocator.h"
 #include "../../header/Graphics/GraphicService.h"
 
+namespace Gameplay
+{
+    namespace Board
+    {
+        using namespace UI::UIElement;
+        using namespace Global;
 
-namespace Gameplay {
+        BoardView::BoardView(BoardController* controller)
+        {
+            board_controller = controller;
+            board_image = new ImageView();
+            background_image = new ImageView();
+        }
 
-	namespace Board {
+        BoardView::~BoardView() 
+        { 
+            delete (board_image);
+            delete (background_image);
+        }
 
-		using namespace UI::UIElement;
-		//using namespace Cell;
-		using namespace Global;
+        void BoardView::initialize() 
+        {
+            initializeBackgroudImage();
+            initializeBoardImage();
+        }
 
-		BoardView::BoardView(BoardController* controller) {
-			board_controller = controller;
-			background_image = new ImageView();
-			board_image = new ImageView();
-			 
-		}
+        void BoardView::initializeBackgroudImage()
+        {
+            sf::RenderWindow* game_window = ServiceLocator::getInstance()->getGraphicService()->getGameWindow();
 
-		BoardView::~BoardView() {
-			delete(background_image);
-			delete(board_image);
-		}
+            background_image->initialize(Config::background_texture_path, game_window->getSize().x, game_window->getSize().y, sf::Vector2f(0, 0));
+            background_image->setImageAlpha(background_alpha);
+        }
 
-		void BoardView::initialize() {
-			initializeBackgroundImage();
-			initializeBoardImage();
-		}
+        void BoardView::initializeBoardImage()
+        {
+            board_image->initialize(Config::board_texture_path, board_width, board_height, sf::Vector2f(0, 0));
+            board_image->setCentreAlinged();
+        }
 
-		void BoardView::update() {
-			background_image->update();
-			board_image->update();
-		}
+        void BoardView::update()
+        {
+            background_image->update();
+            board_image->update();
+        }
 
-		void BoardView::render() {
-			background_image->render();
-			board_image->render();
-		}
-
-		void BoardView::initializeBackgroundImage()
-		{
-			sf::RenderWindow* game_window = ServiceLocator::getInstance()->getGraphicService()->getGameWindow();
-
-			background_image->initialize(Config::background_texture_path, game_window->getSize().x, game_window->getSize().y, sf::Vector2f(0, 0));
-			background_image->setImageAlpha(background_alpha);
-		}
-
-		void BoardView::initializeBoardImage()
-		{
-			board_image->initialize(Config::board_texture_path, board_width, board_height, sf::Vector2f(0, 0));
-			board_image->setCentreAlinged();
-		}
-	}
-
+        void BoardView::render()
+        {
+            background_image->render();
+            board_image->render();
+        }
+    }
 }

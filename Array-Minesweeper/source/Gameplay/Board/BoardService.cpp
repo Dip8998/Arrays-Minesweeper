@@ -1,30 +1,40 @@
 #include "../../header/Gameplay/Board/BoardService.h"
 
-namespace Gameplay {
+namespace Gameplay
+{
+	namespace Board
+	{
+		using namespace UI;
+		using namespace UI::UIElement;
 
-	namespace Board {
-
-		BoardService::BoardService() {
+		BoardService::BoardService()
+		{
 			board_controller = nullptr;
 		}
 
-		BoardService::~BoardService() {
+		BoardService::~BoardService()
+		{
 			destroy();
 		}
 
-		void BoardService::initialize() {
+		void BoardService::initialize()
+		{
+			board_controller = new BoardController();
 			board_controller->initialize();
 		}
 
-		void BoardService::update() {
+		void BoardService::update()
+		{
 			board_controller->update();
 		}
 
-		void BoardService::render() {
+		void BoardService::render()
+		{
 			board_controller->render();
 		}
 
-		void BoardService::resetBoard() {
+		void BoardService::resetBoard()
+		{
 			board_controller->reset();
 		}
 
@@ -33,5 +43,4 @@ namespace Gameplay {
 			delete(board_controller);
 		}
 	}
-
 }

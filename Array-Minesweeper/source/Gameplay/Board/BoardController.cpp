@@ -1,44 +1,61 @@
 #include "../../header/Gameplay/Board/BoardController.h"
+#include "../../header/Gameplay/Board/BoardView.h"
 
-namespace Gameplay {
+namespace Gameplay
+{
+	namespace Board
+	{
 
-	namespace Board {
-
-		BoardController::BoardController() {
+		BoardController::BoardController()
+		{
 			board_view = new BoardView(this);
+			createBoard();
 		}
 
-		BoardController::~BoardController() {
+		BoardController::~BoardController()
+		{
 			destroy();
 		}
 
-		void BoardController::createBoard() {
-
+		void BoardController::createBoard()
+		{
+			
 		}
 
-		void BoardController::initialize() {
+		void BoardController::initialize()
+		{
 			board_view->initialize();
 		}
 
-		void BoardController::update() {
+		void BoardController::update()
+		{
 			board_view->update();
 		}
 
-		void BoardController::render() {
+		void BoardController::render()
+		{
 			board_view->render();
 		}
 
-		void BoardController::reset() {
-
+		void BoardController::reset()
+		{
+			resetBoard();
 		}
 
-		void BoardController::deleteBoard() {
-
+		void BoardController::resetBoard()
+		{
+			
 		}
 
-		void BoardController::destroy() {
-			delete(board_view);
+		void BoardController::deleteBoard()
+		{
+			
+		}
+
+		void BoardController::destroy()
+		{
+			deleteBoard();
+			delete (board_view);
 		}
 	}
-
 }

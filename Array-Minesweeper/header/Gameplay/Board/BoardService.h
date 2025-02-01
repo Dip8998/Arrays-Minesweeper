@@ -1,25 +1,28 @@
 #pragma once
 #include "../../header/Gameplay/Board/BoardController.h"
+#include "../../header/UI/UIElement/ButtonView.h"
 
-namespace Gameplay {
 
-	namespace Board {
+namespace Gameplay
+{
+    namespace Board
+    {
+        class BoardService
+        {
+        private:
+            Board::BoardController* board_controller;
 
-		class BoardService {
-		private:
-			BoardController* board_controller;
+            void destroy();
 
-			void destroy();
+        public:
+            BoardService();
+            ~BoardService();
+            void initialize();
+            void update();
+            void render();
 
-		public:
-			BoardService();
-			~BoardService();
 
-			void initialize();
-			void update();
-			void render();
-			void resetBoard();
-		};
-
-	}
+            void resetBoard();
+        };
+    }
 }
