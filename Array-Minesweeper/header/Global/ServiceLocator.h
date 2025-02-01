@@ -11,9 +11,9 @@ namespace Global
     class ServiceLocator
     {
     private:
-        Event::EventService* event_service;
+        EventM::EventService* event_service;
         Graphics::GraphicService* graphic_service;
-        Sound::SoundService* sound_service;
+        SoundM::SoundService* sound_service;
         UI::UIService* ui_service;
         Gameplay::GameplayService* gameplay_service;
         Gameplay::Board::BoardService* board_service;
@@ -31,9 +31,9 @@ namespace Global
         void update();
         void render();
 
-        Event::EventService* getEventService();
+        EventM::EventService* getEventService();
         Graphics::GraphicService* getGraphicService();
-        Sound::SoundService* getSoundService();
+        SoundM::SoundService* getSoundService();
         UI::UIService* getUIService();
         Gameplay::GameplayService* getGameplayService();
         Gameplay::Board::BoardService* getBoardService();

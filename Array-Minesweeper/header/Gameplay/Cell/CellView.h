@@ -1,27 +1,40 @@
 #pragma once
-#include "../../header/UI/UIElement/ButtonView.h"
+#include <SFML/Graphics.hpp>
+#include <../../header/UI/UIElement/ButtonView.h>
+#include "CellController.h"
 
-namespace Gameplay {
+using namespace sf;
 
-	namespace Cell {
+namespace Gameplay
+{
+	namespace Cell
+	{
 		class CellController;
 
-		class CellView {
+		class CellView
+		{
 		private:
-			UI::UIElement::ButtonView* cell_button;
 			CellController* cell_controller;
-			const int tile_size = 32;
+			UI::UIElement::ButtonView* cell_button;
+
 			void initializeButtonImage(float width, float height);
+			const int tile_size = 32;
+			int slice_count = 12;
+
+			const float cell_top_offset = 274.f;
+			const float cell_left_offset = 583.f;
 
 		public:
 			CellView(CellController* controller);
 			~CellView();
 
-			void initialize();
-			void update();
+			void initialize(float width, float height);
 			void render();
+			void update();
+
+			void setCellTexture();
+			sf::Vector2f getCellScreenPosition(float width, float height);
+
 		};
-
 	}
-
 }
