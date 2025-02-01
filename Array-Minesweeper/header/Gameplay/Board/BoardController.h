@@ -1,4 +1,5 @@
 #pragma once
+#include "../../header/Gameplay/Board/BoardView.h"
 
 namespace Gameplay {
 
@@ -20,6 +21,7 @@ namespace Gameplay {
 			void reset();
 
 		private:
+			BoardView* board_view;
 			void createBoard();
 			void destroy();
 			void deleteBoard();
