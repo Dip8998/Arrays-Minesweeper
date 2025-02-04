@@ -6,6 +6,7 @@ namespace Gameplay
 	{
 		using namespace UI;
 		using namespace UI::UIElement;
+		using namespace Cell;
 
 		BoardService::BoardService()
 		{
@@ -46,6 +47,11 @@ namespace Gameplay
 		int BoardService::getMinesCount() 
 		{
 			return board_controller->getMinesCount();
+		}
+
+		void BoardService::processCellInput(Cell::CellController* cell_controller, UI::UIElement::ButtonType button_type)
+		{
+			board_controller->processCellInput(cell_controller, button_type);
 		}
 	}
 }
