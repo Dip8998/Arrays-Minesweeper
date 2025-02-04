@@ -42,4 +42,9 @@ namespace Gameplay
 	{
 		delete(gameplay_controller);
 	}
+
+	float GameplayService::getRemainingTime()
+	{
+		return gameplay_controller->getRemainingTime();
+	}
 }

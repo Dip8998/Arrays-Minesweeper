@@ -10,6 +10,8 @@ namespace Gameplay
 
 		void createController();
 		void destroy();
+		float remaining_time;
+
 
 	public:
 		GameplayService();
@@ -20,5 +22,6 @@ namespace Gameplay
 		void render();
 
 		void startGame();
+		float getRemainingTime();
 	};
 }

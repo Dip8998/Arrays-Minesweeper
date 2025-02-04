@@ -6,6 +6,10 @@ namespace Gameplay
 {
     class GameplayController
     {
+    private:
+        float remaining_time;
+
+
     public:
         GameplayController();
         ~GameplayController();
@@ -15,5 +19,7 @@ namespace Gameplay
         void render();
 
         void restart();
+        void updateRemainingTime();
+        float getRemainingTime();
     };
 }
