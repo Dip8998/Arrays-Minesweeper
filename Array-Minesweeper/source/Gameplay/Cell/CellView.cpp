@@ -47,6 +47,8 @@ namespace Gameplay
 		{
 			sf::Vector2f cell_screen_position = getCellScreenPosition(width, height);
 			cell_button->initialize("Cell", Config::cells_texture_path, width * slice_count, height, cell_screen_position);
+			registerButtonCallback();
+
 		}
 
 		void CellView::setCellTexture()
