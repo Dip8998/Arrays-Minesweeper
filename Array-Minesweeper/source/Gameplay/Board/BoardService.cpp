@@ -6,6 +6,9 @@ namespace Gameplay
 	{
 		using namespace UI;
 		using namespace UI::UIElement;
+		using namespace Cell;
+		enum class BoardState;
+
 
 		BoardService::BoardService()
 		{
@@ -35,7 +38,7 @@ namespace Gameplay
 
 		void BoardService::resetBoard()
 		{
-			board_controller->reset();
+			board_controller->resetBoard();
 		}
 
 		void BoardService::destroy()
@@ -47,5 +50,28 @@ namespace Gameplay
 		{
 			return board_controller->getMinesCount();
 		}
+
+		void BoardService::processCellInput(Cell::CellController* cell_controller, UI::UIElement::ButtonType button_type)
+		{
+			board_controller->processCellInput(cell_controller, button_type);
+		}
+
+		BoardState BoardService::getBoardState()
+		{
+			return board_controller->getBoardState();
+		}
+
+		void BoardService::setBoardState(BoardState state)
+		{
+			board_controller->setBoardState(state);
+		}
+
+		void BoardService::flagAllMines() { board_controller->flagAllMines(); }
+
+
+		void BoardService::showBoard() { 
+			board_controller->showBoard(); 
+		}
+
 	}
 }

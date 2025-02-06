@@ -26,5 +26,7 @@ namespace Gameplay
 
 		int getMinesCount();
 
+		void endGame(GameResult result);
+
 	};
 }

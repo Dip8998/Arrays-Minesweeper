@@ -38,9 +38,14 @@ namespace Gameplay
 		gameplay_controller->restart();
 	}
 
-	void GameplayService::destroy()
+	void GameplayService::endGame(GameResult result)
 	{
-		delete(gameplay_controller);
+		gameplay_controller->endGame(result);
+	}
+
+	int GameplayService::getMinesCount()
+	{
+		return gameplay_controller->getMinesCount();
 	}
 
 	float GameplayService::getRemainingTime()
@@ -48,8 +53,8 @@ namespace Gameplay
 		return gameplay_controller->getRemainingTime();
 	}
 
-	int GameplayService::getMinesCount()
+	void GameplayService::destroy()
 	{
-		return 11;
+		delete(gameplay_controller);
 	}
 }

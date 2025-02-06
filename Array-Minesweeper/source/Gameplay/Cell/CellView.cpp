@@ -3,18 +3,19 @@
 #include "../../../header/Global/Config.h"
 #include "../../../header/UI/UIElement/ButtonView.h"
 #include "../../../header/UI/UIElement/ImageView.h"
+#include "../../header/Global/ServiceLocator.h"
 #include <iostream>
 #include "../../header/Sound/SoundService.h"
-
-
-using namespace UI::UIElement;
-using namespace Global;
-using namespace std;
 
 namespace Gameplay
 {
 	namespace Cell
 	{
+
+		using namespace UI::UIElement;
+		using namespace Global;
+		using namespace std;
+
 		CellView::CellView(CellController* controller)
 		{
 			cell_controller = controller;
@@ -46,6 +47,8 @@ namespace Gameplay
 		{
 			sf::Vector2f cell_screen_position = getCellScreenPosition(width, height);
 			cell_button->initialize("Cell", Config::cells_texture_path, width * slice_count, height, cell_screen_position);
+			registerButtonCallback();
+
 		}
 
 		void CellView::setCellTexture()
@@ -89,17 +92,9 @@ namespace Gameplay
 			cell_button->registerCallbackFuntion(std::bind(&CellView::cellButtonCallback, this, std::placeholders::_1));
 		}
 
-		void CellView::cellButtonCallback(ButtonType button_type)
+		void CellView::cellButtonCallback(UI::UIElement::ButtonType button_type)
 		{
-			switch (button_type)
-			{
-			case UI::UIElement::ButtonType::LEFT_MOUSE_BUTTON:
-				cell_controller->openCell();
-				break;
-			case UI::UIElement::ButtonType::RIGHT_MOUSE_BUTTON:
-				cell_controller->flagCell();
-				break;
-			}
+			ServiceLocator::getInstance()->getBoardService()->processCellInput(cell_controller, button_type);
 		}
 
 	
