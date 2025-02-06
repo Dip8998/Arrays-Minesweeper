@@ -7,6 +7,8 @@ namespace Gameplay
 		using namespace UI;
 		using namespace UI::UIElement;
 		using namespace Cell;
+		enum class BoardState;
+
 
 		BoardService::BoardService()
 		{
@@ -53,5 +55,20 @@ namespace Gameplay
 		{
 			board_controller->processCellInput(cell_controller, button_type);
 		}
+
+		BoardState BoardService::getBoardState()
+		{
+			return board_controller->getBoardState();
+		}
+
+		void BoardService::setBoardState(BoardState state)
+		{
+			board_controller->setBoardState(state);
+		}
+
+		void BoardService::showBoard() { 
+			board_controller->showBoard(); 
+		}
+
 	}
 }

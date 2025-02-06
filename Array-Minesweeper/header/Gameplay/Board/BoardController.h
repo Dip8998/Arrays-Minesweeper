@@ -39,17 +39,24 @@ namespace Gameplay
             void openCell(sf::Vector2i cell_position);
             void openEmptyCells(sf::Vector2i cell_position);
             void openAllCells();
+            void showBoard();
             void processCellInput(Cell::CellController* cell_controller, UI::UIElement::ButtonType button_type);
             void flagCell(sf::Vector2i cell_position);
             void processCellValue(sf::Vector2i cell_position);
             void processEmptyCell(sf::Vector2i cell_position);
+            void processMineCell(sf::Vector2i cell_position);
             void populateBoard(sf::Vector2i cell_position);
+
+            void populateMines(sf::Vector2i cell_position);
 
             int countMinesAround(sf::Vector2i cell_position);
 
             bool isValidCellPosition(sf::Vector2i cell_position);
 
             void populateCells();
+
+            BoardState getBoardState();
+            void setBoardState(BoardState state);
 
         private:
             BoardView* board_view;
@@ -60,8 +67,7 @@ namespace Gameplay
             void resetBoard();
             void deleteBoard();
             void destroy();
-            BoardState getBoardState();
-            void setBoardState(BoardState state);
+           
         };
     }
 }

@@ -7,15 +7,15 @@
 #include <iostream>
 #include "../../header/Sound/SoundService.h"
 
-
-using namespace UI::UIElement;
-using namespace Global;
-using namespace std;
-
 namespace Gameplay
 {
 	namespace Cell
 	{
+
+		using namespace UI::UIElement;
+		using namespace Global;
+		using namespace std;
+
 		CellView::CellView(CellController* controller)
 		{
 			cell_controller = controller;
@@ -92,7 +92,7 @@ namespace Gameplay
 			cell_button->registerCallbackFuntion(std::bind(&CellView::cellButtonCallback, this, std::placeholders::_1));
 		}
 
-		void CellView::cellButtonCallback(ButtonType button_type)
+		void CellView::cellButtonCallback(UI::UIElement::ButtonType button_type)
 		{
 			ServiceLocator::getInstance()->getBoardService()->processCellInput(cell_controller, button_type);
 		}
