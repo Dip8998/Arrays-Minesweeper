@@ -35,6 +35,7 @@ namespace Gameplay
             void render();
             void reset();
             int getMinesCount();
+            void resetBoard();
 
             void openCell(sf::Vector2i cell_position);
             void openEmptyCells(sf::Vector2i cell_position);
@@ -64,7 +65,6 @@ namespace Gameplay
             Gameplay::Cell::CellController* board[number_of_rows][number_of_colums];
             void createBoard();
             void initializeCells();
-            void resetBoard();
             void deleteBoard();
             void destroy();
            

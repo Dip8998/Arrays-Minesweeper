@@ -38,7 +38,7 @@ namespace Gameplay
 
 		void BoardService::resetBoard()
 		{
-			board_controller->reset();
+			board_controller->resetBoard();
 		}
 
 		void BoardService::destroy()

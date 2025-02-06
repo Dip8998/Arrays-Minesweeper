@@ -11,20 +11,24 @@ namespace Gameplay
     using namespace Main;
 
 
-    GameplayController::~GameplayController() {  }
+    GameplayController::~GameplayController() { board_service = nullptr; }
 
-    void GameplayController::initialize() {  }
+    void GameplayController::initialize() { board_service = ServiceLocator::getInstance()->getBoardService(); }
 
     void GameplayController::update()
     {
         updateRemainingTime();
+        if (isTimeOver())
+            endGame(GameResult::LOST);
     }
 
     void GameplayController::render() {  }
 
     void GameplayController::restart() 
     { 
-        ServiceLocator::getInstance()->getBoardService()->resetBoard();
+        game_result = GameResult::NONE;
+        board_service->resetBoard();
+        remaining_time = max_level_duration;
     }
 
     void GameplayController::updateRemainingTime()
@@ -40,6 +44,7 @@ namespace Gameplay
     {
         return 10;
     }
+    bool GameplayController::isTimeOver() { return (remaining_time <= 1); }
 
     void GameplayController::beginGameOverTimer() { remaining_time = game_over_time; }
 

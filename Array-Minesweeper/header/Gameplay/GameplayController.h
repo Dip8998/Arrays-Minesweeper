@@ -43,6 +43,7 @@ namespace Gameplay
         void endGame(GameResult result);
 
         int getMinesCount();
+        bool isTimeOver();
         float getRemainingTime();
     };
 }
