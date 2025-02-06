@@ -14,7 +14,7 @@ namespace UI
         using namespace UIElement;
         using namespace Main;
         using namespace Graphics;
-        using namespace Sound;
+        using namespace SoundM;
 
         CreditsScreenUIController::CreditsScreenUIController()
         {
